@@ -20,7 +20,7 @@ def create_app(script_info=None):
     cors.init_app(app, resources={r"*": {"origins": "*"}})
 
     # register api
-    from project.apis import apis
+    from project.api import api
     api.init_app(app)
 
     # shell context for flask cli
