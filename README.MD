@@ -2,11 +2,11 @@
 
 # Python 3.5
 
-## Crear virtual env
+## 1. Crear virtual env
 py -3 -m venv venv  # Windows
 python3 -m venv venv  # Linux
 
-## Activar el virtual env
+## 2. Activar el virtual env
 . venv/bin/activate  # Linux
 venv\Scripts\activate  # Windows
 
@@ -14,5 +14,5 @@ venv\Scripts\activate  # Windows
 pip freeze > requirements.txt  
 pip install -r requirements.txt  
 
-# 4. Levantar servidor SOAP
+# 4. Levantar servidor
 python manage.py run
