@@ -1,9 +1,12 @@
 from flask_restplus import Namespace, Resource
 from flask import request
+from flask_jwt_extended import jwt_required
+
 infoCarrera_namespace = Namespace("infoCarrera")
 
 
 class InfoCarrera(Resource):
+    @jwt_required
     def get(self):
         if not request.args.get('codCarrera'):
             return {"status": "error"}, 400

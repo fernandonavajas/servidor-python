@@ -1,9 +1,12 @@
 from flask_restplus import Namespace, Resource
 from flask import request
+from flask_jwt_extended import jwt_required
+
 top10_namespace = Namespace("top10")
 
 
 class Top10(Resource):
+    @jwt_required
     def post(self):
         entry_point = request.json
         error = False

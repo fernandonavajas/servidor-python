@@ -1,0 +1,314 @@
+{
+	"info": {
+		"_postman_id": "b7e9e9e1-f9d4-4e1c-b8c7-7e8dcc52ee55",
+		"name": "res-paralela",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "top10",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nem\": 546\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/top10",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"top10"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "infoCarreraUnica",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1OTU4MDYwNjcsIm5iZiI6MTU5NTgwNjA2NywianRpIjoiZWU1ZjEyYzAtY2I2OS00NzNhLTlhYzAtNjAxNzYxMGVmMzkxIiwiZXhwIjoxNTk1ODA2OTY3LCJpZGVudGl0eSI6ImZlcm5hbmRvIiwiZnJlc2giOmZhbHNlLCJ0eXBlIjoiYWNjZXNzIn0.5cGTAYJCeaT_Rj6NkQv3ITjrUTkGr1uXCCP77e6lsdQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/infoCarrera?codCarrera=343",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"infoCarrera"
+					],
+					"query": [
+						{
+							"key": "codCarrera",
+							"value": "343"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ping",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/ping",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"ping"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "infoCarreras",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/infoCarreras?codCarrera=343&codCarrera1=555",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"infoCarreras"
+					],
+					"query": [
+						{
+							"key": "codCarrera",
+							"value": "343"
+						},
+						{
+							"key": "codCarrera1",
+							"value": "555"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user_registration",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"Gina\",\r\n    \"password\": \"garrido\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/registration",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"registration"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "secret",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1OTU4MDU3MzcsIm5iZiI6MTU5NTgwNTczNywianRpIjoiYWZjY2ZhN2MtYjkwMC00MGZiLWI2ODktNGM4MTkwMmNkMjdlIiwiZXhwIjoxNTk1ODA2NjM3LCJpZGVudGl0eSI6IkdpbmEiLCJmcmVzaCI6ZmFsc2UsInR5cGUiOiJhY2Nlc3MifQ.q04ikX1NeDAGuDuAAiAEDo7yb2kpE1af6prLbeULDyA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/secret",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"secret"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user_list",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1OTU4MDU3MzcsIm5iZiI6MTU5NTgwNTczNywianRpIjoiYWZjY2ZhN2MtYjkwMC00MGZiLWI2ODktNGM4MTkwMmNkMjdlIiwiZXhwIjoxNTk1ODA2NjM3LCJpZGVudGl0eSI6IkdpbmEiLCJmcmVzaCI6ZmFsc2UsInR5cGUiOiJhY2Nlc3MifQ.q04ikX1NeDAGuDuAAiAEDo7yb2kpE1af6prLbeULDyA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/secret",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"secret"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user_login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "username",
+						"value": "fernando",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "password",
+						"value": "navajas",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"fernando\",\r\n    \"password\": \"navajas\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/login",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user_refresh_token",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1OTU4MDU5NTAsIm5iZiI6MTU5NTgwNTk1MCwianRpIjoiNTIzZjc1MDAtZTZiNy00YmJhLWJiY2ItOTBjNDJiMmE2NDQ0IiwiZXhwIjoxNTk4Mzk3OTUwLCJpZGVudGl0eSI6ImZlcm5hbmRvIiwidHlwZSI6InJlZnJlc2gifQ.zGErZHs2sZ5ta_d-Wt79mi0EFOY_bZ7NlsbWgscyc1M",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/token/refresh",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"token",
+						"refresh"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
