@@ -1,8 +1,8 @@
 from flask_restplus import Api
 
 from project.api.ping import ping_namespace
-from project.api.top10Carreras import top10_namespace
-from project.api.infoCarreras import infoCarreras_namespace
+from project.api.infoCarrera import top10_namespace
+from project.api.infoCarrera import infoCarreras_namespace
 from project.api.infoCarrera import infoCarrera_namespace
 from project.api.authorization import userRegistration_namespace, userLogin_namespace, userLogoutAccess_namespace
 from project.api.authorization import userLogoutRefresh_namespace, tokenRefresh_namespace, allUsers_namespace, secretResource_namespace
