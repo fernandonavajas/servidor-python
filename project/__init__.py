@@ -2,8 +2,11 @@ import os
 
 from flask import Flask
 from flask_cors import CORS
+from flask_swagger_ui import get_swaggerui_blueprint
+from project.api import get_blueprint
 
 cors = CORS()
+
 
 
 def create_app(script_info=None):
@@ -13,6 +16,22 @@ def create_app(script_info=None):
 
     # instantiate the app
     app = Flask(__name__)
+
+    ### swagger specific ###
+    SWAGGER_URL = '/swagger'
+    API_URL = '/static/swagger.json'
+    SWAGGERUI_BLUEPRINT = get_swaggerui_blueprint(
+        SWAGGER_URL,
+        API_URL,
+        config={
+            'app_name': "Seans-Python-Flask-REST-Boilerplate"
+        }
+    )
+    app.register_blueprint(SWAGGERUI_BLUEPRINT, url_prefix=SWAGGER_URL)
+    ### end swagger specific ###
+
+
+    app.register_blueprint(get_blueprint())
 
     # set config
     app.config.from_object("project.config.DevelopmentConfig")

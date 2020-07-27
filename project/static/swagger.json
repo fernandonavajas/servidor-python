@@ -1,0 +1,183 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "description": "Fernando Navajas",
+        "version": "1.0.0",
+        "title": "Documentacion de servicios APP: Ponderacion Carreras",
+        "license": {
+            "name": "MIT",
+            "url": "https://opensource.org/licenses/MIT"
+        }
+    },
+    "servers": [{
+        "url": "/"
+    }],
+    "tags": [{
+        "name": "Ping Servicio",
+        "description": "Endpoint para consultar el estado de la API."
+    }, {
+        "name": "API Carrera",
+        "description": "API para consultar postulaciones a carreras unvesitarias."
+    }, {
+        "name": "API AUTH",
+        "description": "API para administrar token y usuarios."
+    }],
+    "paths": {
+        "/ping": {
+            "get": {
+                "tags": [
+                    "Ping Servicio"
+                ],
+                "summary": "Return status",
+                "responses": {
+                    "200": {
+                        "description": "Ok"
+                    },
+                    "500": {
+                        "description": "El servidor se encuntra caido"
+                    }
+                }
+            }
+        },
+        "/top10": {
+            "post": {
+                "tags": [
+                    "API Carrera"
+                ],
+                "summary": "Obtener las 10 mejores carreras para postular en base a las ponderaciones del estudiante",
+                "requestBody": {
+                    "description": "Top10Carreras Request Object",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/requestTop10"
+                            }
+                        }
+                    }
+                },
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "schema": {
+                            "$ref": "#/components/schemas/responseTop10"
+                        }
+                    }
+                }
+            }
+        },
+        "/infoCarrera": {
+            "get": {
+                "tags": [
+                    "API Carrera"
+                ],
+                "summary": "Obtener la informacion de una carrera",
+                "parameters": [{
+                    "in": "query",
+                    "style": "form",
+                    "explode": true,
+                    "name": "codCarrera",
+                    "type": "string",
+                    "minimum": 1,
+                    "required": true,
+                    "description": "Ingresa el codigo de la carrera a consultar"
+                }],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "schema": {
+                            "$ref": "#/components/schemas/responseInfoCarrera"
+                        }
+                    },
+                    "400": {
+                        "description": "No se encontraro carrera con ese codigo"
+                    }
+                }
+            }
+        },
+        "/infoCarreras": {
+            "get": {
+                "tags": [
+                    "API Carrera"
+                ],
+                "summary": "Obtener la informacion de una o mas carreras",
+                "parameters": [{
+                    "in": "query",
+                    "style": "form",
+                    "explode": true,
+                    "name": "codCarrera",
+                    "type": "string",
+                    "minimum": 1,
+                    "required": true,
+                    "description": "Ingresa  por query params los codigo de las carreras a consultar"
+                }],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "schema": {
+                            "$ref": "#/components/schemas/responseInfoCarreras"
+                        }
+                    },
+                    "400": {
+                        "description": "No se encontraron carreras con ese codigo"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "requestTop10": {
+                "type": "object",
+                "properties": {
+                    "nem": {
+                        "type": "integer"
+                    },
+                    "lenguaje": {
+                        "type": "integer"
+                    }
+                }
+            },
+            "responseInfoCarrera": {
+                "type": "object",
+                "properties": {
+                    "nem": {
+                        "type": "integer"
+                    },
+                    "lenguaje": {
+                        "type": "integer"
+                    },
+                    "matematicas": {
+                        "type": "integer"
+                    }
+                }
+            },
+            "responseTop10": {
+                "type": "array",
+                "items": {
+                    "nombre_carrera": {
+                        "type": "string"
+                    },
+                    "puntaje_minimo_2019": {
+                        "type": "integer"
+                    }
+                }
+            },
+            "responseInfoCarreras": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/responseInfoCarrera"
+                }
+            }
+        }
+    }
+}
