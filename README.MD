@@ -19,3 +19,9 @@ pip install -r requirements.txt
 
 # 4. Levantar servidor
 python manage.py run
+
+# 5. App levantada!
+Abre tu navegador: http://127.0.0.1:5000/ping
+
+# 6. Ver los servicios en Swagger
+Abre tu navegador: http://127.0.0.1:5000/swagger
