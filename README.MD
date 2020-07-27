@@ -19,3 +19,7 @@ pip install -r requirements.txt
 
 # 4. Levantar servidor
 python manage.py run
+
+# 5. Listo
+Abre tu navegador: http://127.0.0.1:5000/ping
+
