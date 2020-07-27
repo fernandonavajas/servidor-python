@@ -3,11 +3,7 @@
     "info": {
         "description": "Fernando Navajas",
         "version": "1.0.0",
-        "title": "Documentacion de servicios APP: Ponderacion Carreras",
-        "license": {
-            "name": "MIT",
-            "url": "https://opensource.org/licenses/MIT"
-        }
+        "title": "Documentacion de servicios APP: Ponderacion Carreras"
     },
     "servers": [{
         "url": "/"
@@ -75,6 +71,9 @@
                     "API Carrera"
                 ],
                 "summary": "Obtener la informacion de una carrera",
+                "security": [{
+                    "bearerAuth": []
+                }],
                 "parameters": [{
                     "in": "query",
                     "style": "form",
@@ -107,15 +106,19 @@
                     "API Carrera"
                 ],
                 "summary": "Obtener la informacion de una o mas carreras",
+                "security": [{
+                    "bearerAuth": []
+                }],
                 "parameters": [{
+                    "name": "codCarreras",
                     "in": "query",
-                    "style": "form",
-                    "explode": true,
-                    "name": "codCarrera",
-                    "type": "string",
-                    "minimum": 1,
+                    "description": "Ingresa codigos de las carreras",
                     "required": true,
-                    "description": "Ingresa  por query params los codigo de las carreras a consultar"
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "collectionFormat": "multi"
                 }],
                 "produces": [
                     "application/json"
@@ -124,11 +127,93 @@
                     "200": {
                         "description": "Ok",
                         "schema": {
-                            "$ref": "#/components/schemas/responseInfoCarreras"
+                            "$ref": "#/components/schem3as/responseInfoCarreras"
                         }
                     },
                     "400": {
                         "description": "No se encontraron carreras con ese codigo"
+                    }
+                }
+            }
+        },
+        "/registration": {
+            "post": {
+                "tags": [
+                    "API AUTH"
+                ],
+                "summary": "Registrarse como usuario",
+                "requestBody": {
+                    "description": "Http basic authentification Object",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/requestRegistration"
+                            }
+                        }
+                    }
+                },
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "schema": {
+                            "$ref": "#/components/schemas/responseTop10"
+                        }
+                    }
+                }
+            }
+        },
+        "/login": {
+            "post": {
+                "tags": [
+                    "API AUTH"
+                ],
+                "summary": "Iniciar session",
+                "requestBody": {
+                    "description": "Http basic authentification Object",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/requestRegistration"
+                            }
+                        }
+                    }
+                },
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "schema": {
+                            "$ref": "#/components/schemas/responseTop10"
+                        }
+                    }
+                }
+            }
+        },
+        "/users": {
+            "get": {
+                "tags": [
+                    "API AUTH"
+                ],
+                "summary": "Ver todos los usuarios creados",
+                "security": [{
+                    "bearerAuth": []
+                }],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "schema": {
+                            "$ref": "#/components/schemas/responseTop10"
+                        }
                     }
                 }
             }
@@ -147,6 +232,37 @@
                     }
                 }
             },
+            "responseTop10": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/carrera"
+                }
+            },
+            "requestRegistration": {
+                "type": "object",
+                "properties": {
+                    "username": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    }
+                }
+            },
+            "responseRegistration": {
+                "type": "object",
+                "properties": {
+                    "message": {
+                        "type": "string"
+                    },
+                    "access_token": {
+                        "type": "string"
+                    },
+                    "refresh_token": {
+                        "type": "string"
+                    }
+                }
+            },
             "responseInfoCarrera": {
                 "type": "object",
                 "properties": {
@@ -161,13 +277,16 @@
                     }
                 }
             },
-            "responseTop10": {
-                "type": "array",
-                "items": {
-                    "nombre_carrera": {
-                        "type": "string"
+            "carrera": {
+                "type": "object",
+                "properties": {
+                    "nem": {
+                        "type": "integer"
                     },
-                    "puntaje_minimo_2019": {
+                    "lenguaje": {
+                        "type": "integer"
+                    },
+                    "matematicas": {
                         "type": "integer"
                     }
                 }
@@ -177,7 +296,31 @@
                 "items": {
                     "$ref": "#/components/schemas/responseInfoCarrera"
                 }
+            },
+            "responseUsers": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/user"
+                }
+            },
+            "user": {
+                "type": "object",
+                "properties": {
+                    "username": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer"
             }
         }
     }
+
 }

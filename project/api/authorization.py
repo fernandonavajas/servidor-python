@@ -100,6 +100,7 @@ class TokenRefresh(Resource): #Clase que solicita un nuevo token, con Headers Au
       
       
 class AllUsers(Resource): #Obtiene todos los usuarios - elimina todos los usuarios
+    @jwt_required
     def get(self):
         return UserModel.return_all()
     
