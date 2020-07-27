@@ -3,7 +3,6 @@ from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 from flask_jwt_extended import JWTManager
 from flask_swagger_ui import get_swaggerui_blueprint
-from project.api import get_blueprint
 
 cors = CORS()
 db = SQLAlchemy()
@@ -29,9 +28,6 @@ def create_app(script_info=None):
     )
     app.register_blueprint(SWAGGERUI_BLUEPRINT, url_prefix=SWAGGER_URL)
     ### end swagger specific ###
-
-
-    app.register_blueprint(get_blueprint())
 
     # set config
     app.config.from_object("project.config.DevelopmentConfig")
