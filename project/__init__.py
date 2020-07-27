@@ -1,12 +1,9 @@
 from flask import Flask
 from flask_cors import CORS
-<<<<<<< HEAD
 from flask_sqlalchemy import SQLAlchemy
 from flask_jwt_extended import JWTManager
-=======
 from flask_swagger_ui import get_swaggerui_blueprint
 from project.api import get_blueprint
->>>>>>> swagger-ui
 
 cors = CORS()
 db = SQLAlchemy()
